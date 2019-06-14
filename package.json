@@ -1,18 +1,33 @@
 {
-  "name": "my-ecomplus-app",
+  "name": "@ecomplus/express-app-boilerplate",
   "private": true,
   "version": "0.0.1",
-  "description": "Description for my E-Com Plus app using Express framework",
-  "main": "main.js",
+  "description": "Boilerplate for E-Com Plus apps with Express",
+  "main": "app/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ecomclub/express-app-boilerplate.git"
+  },
+  "keywords": [
+    "ecomplus",
+    "ecomplus-app",
+    "boilerplate",
+    "express-app",
+    "app-boilerplate"
+  ],
+  "author": "E-Com Club <ti@e-com.club>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ecomclub/express-app-boilerplate/issues"
+  },
+  "homepage": "https://github.com/ecomclub/express-app-boilerplate#readme",
   "devDependencies": {
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-conventional": "^8.0.0",
     "husky": "^2.4.1",
     "standard": "^12.0.1"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   }
 }
