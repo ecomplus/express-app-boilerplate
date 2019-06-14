@@ -18,12 +18,16 @@ const port = process.env.PORT || 3000
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+// E-Com Plus Store ID from request header
+let storeId
 app.use((req, res, next) => {
   if (req.baseUrl.startsWith('/ecom/') && process.env.NODE_ENV === 'production') {
     // check if request is comming from E-Com Plus servers
     if (ecomServerIps.indexOf(req.get('x-real-ip')) === -1) {
       res.status(403).send('Who are you? Unauthorized IP address')
     } else {
+      // get store ID from request header
+      storeId = parseInt(req.get('x-store-id'), 10)
       next()
     }
   } else {
@@ -35,12 +39,12 @@ app.use((req, res, next) => {
 ecomAuth.then(appSdk => {
   // setup app routes
   const routes = './../routes'
-  router.get('/', require(`${routes}/`)(appSdk))
+  router.get('/', require(`${routes}/`)())
 
   // base routes for E-Com Plus Store API
   ;[ 'auth-callback', 'webhook' ].forEach(endpoint => {
     let filename = `/ecom/${endpoint}`
-    router.post(filename, require(`${routes}${filename}`)(appSdk))
+    router.post(filename, require(`${routes}${filename}`)(appSdk, storeId))
   })
 
   /* Add custom app routes here */
