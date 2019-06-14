@@ -13,7 +13,7 @@ logger.log('--> Start running daemon processes')
 ecomAuth.then(appSdk => {
   // configure setup for stores
   // list of procedures to save
-  const procedures = require('./../lib/ecom-api/procedures')
+  const procedures = require('./../lib/store-api/procedures')
   if (procedures && procedures.triggers && procedures.triggers.length) {
     appSdk.configureSetup(procedures, (err, { storeId }) => {
       if (!err) {

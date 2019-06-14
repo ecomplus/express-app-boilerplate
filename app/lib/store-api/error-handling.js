@@ -13,6 +13,7 @@ const ignoreError = response => {
       case 403:
         // ignore resource limits errors
         return true
+
       case 404:
         if (data && data.error_code !== 20) {
           // resource ID not found ?
@@ -21,6 +22,7 @@ const ignoreError = response => {
         }
         break
     }
+
     // must debug
     return false
   }
