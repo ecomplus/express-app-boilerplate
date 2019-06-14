@@ -35,12 +35,12 @@ app.use((req, res, next) => {
 ecomAuth.then(appSdk => {
   // setup app routes
   const routes = './../routes'
-  router.use('/', require(`${routes}/`)(appSdk))
+  router.get('/', require(`${routes}/`)(appSdk))
 
   // base routes for E-Com Plus Store API
   ;[ 'auth-callback', 'webhook' ].forEach(endpoint => {
     let filename = `/ecom/${endpoint}`
-    router.use(filename, require(`${routes}${filename}`)(appSdk))
+    router.post(filename, require(`${routes}${filename}`)(appSdk))
   })
 
   /* Add custom app routes here */
@@ -49,4 +49,12 @@ ecomAuth.then(appSdk => {
   app.use(router)
   app.listen(port)
   logger.log(`--> Starting web app on port :${port}`)
+})
+
+ecomAuth.catch(err => {
+  logger.error(err)
+  setTimeout(() => {
+    // destroy Node process while Store API auth cannot be handled
+    process.exit(1)
+  }, 1100)
 })
