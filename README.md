@@ -4,7 +4,7 @@ Boilerplate for E-Com Plus apps with Node.js and Express web framework
 
 ## Getting started
 
-Setup your new E-Com Plus app with this boilerplate
+Setup the source of your new E-Com Plus app with this boilerplate
 by running the following commands (bash):
 
 ```bash
