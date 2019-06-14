@@ -12,6 +12,7 @@ const { ecomAuth, ecomServerIps } = require('ecomplus-app-sdk')
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
+const router = express.Router()
 const port = process.env.PORT || 3000
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -33,8 +34,19 @@ app.use((req, res, next) => {
 
 ecomAuth.then(appSdk => {
   // setup app routes
-  require('./../routes/')(appSdk)
-})
+  const routes = './../routes'
+  router.use('/', require(`${routes}/`)(appSdk))
 
-app.listen(port)
-logger.log(`--> Starting web app on port :${port}`)
+  // base routes for E-Com Plus Store API
+  ;[ 'auth-callback', 'webhook' ].forEach(endpoint => {
+    let filename = `/ecom/${endpoint}`
+    router.use(filename, require(`${routes}${filename}`)(appSdk))
+  })
+
+  /* Add custom app routes here */
+
+  // add router and start web server
+  app.use(router)
+  app.listen(port)
+  logger.log(`--> Starting web app on port :${port}`)
+})
