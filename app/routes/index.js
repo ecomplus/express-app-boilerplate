@@ -3,7 +3,7 @@
 // read app package.json
 const pkg = require('./../package.json')
 
-module.exports = appSdk => {
+module.exports = () => {
   // show package info on domain root
   return (req, res) => res.send(pkg)
 }

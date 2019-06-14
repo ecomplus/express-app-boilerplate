@@ -3,11 +3,8 @@
 // log on files
 const logger = require('console-files')
 
-module.exports = appSdk => {
+module.exports = (appSdk, storeId) => {
   return (req, res) => {
-    // E-Com Plus Store ID from request header
-    const storeId = parseInt(req.get('x-store-id'), 10)
-
     // handle callback with E-Com Plus app SDK
     // https://github.com/ecomclub/ecomplus-app-sdk
     appSdk.handleCallback(storeId, req.body)
