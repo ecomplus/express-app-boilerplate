@@ -12,8 +12,8 @@ module.exports = [
   {
     title: appName,
     triggers: [
-      // edit triggers here to fit the app necessities
       /*
+      Edit triggers here to fit the app necessities
       {
         resource: 'orders',
         action: 'create'
