@@ -8,6 +8,8 @@ const logger = require('console-files')
 // https://github.com/ecomclub/ecomplus-app-sdk
 const { ecomAuth } = require('ecomplus-app-sdk')
 
+logger.log('--> Start running daemon processes')
+
 ecomAuth.then(appSdk => {
   // configure setup for stores
   // list of procedures to save
