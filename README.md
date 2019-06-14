@@ -10,6 +10,6 @@ Setup your new E-Com Plus app with this boilerplate:
 mkdir my-app
 cd my-app
 git clone https://github.com/ecomclub/express-app-boilerplate.git
-cp -r express-app-boilerplate/app ./
+cp -r express-app-boilerplate/app/* ./
 rm -rf express-app-boilerplate
 ```
