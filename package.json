@@ -1,0 +1,18 @@
+{
+  "name": "my-ecomplus-app",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Description for my E-Com Plus app using Express framework",
+  "main": "main.js",
+  "devDependencies": {
+    "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-conventional": "^8.0.0",
+    "husky": "^2.4.1",
+    "standard": "^12.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
+}
