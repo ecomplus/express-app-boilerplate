@@ -28,7 +28,7 @@ module.exports = ({ appSdk, storeId, auth }, getHiddenData) => {
       // setup returned config object
       let config = data.data || {}
       if (getHiddenData && typeof data.hidden_data === 'object' && data.hidden_data !== null) {
-        Object.assign(data, data.hidden_data)
+        Object.assign(config, data.hidden_data)
       }
       return config
     })
