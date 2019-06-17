@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.use((req, res, next) => {
-  if (req.baseUrl.startsWith('/ecom/') && process.env.NODE_ENV === 'production') {
+  if (req.url.startsWith('/ecom/') && process.env.NODE_ENV === 'production') {
     // check if request is comming from E-Com Plus servers
     if (ecomServerIps.indexOf(req.get('x-real-ip')) === -1) {
       res.status(403).send('Who are you? Unauthorized IP address')
