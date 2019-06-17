@@ -37,5 +37,6 @@ module.exports = ({ appSdk, storeId, auth }, getHiddenData) => {
       // cannot GET current application
       // debug error
       logger.error(err)
+      throw err
     })
 }
