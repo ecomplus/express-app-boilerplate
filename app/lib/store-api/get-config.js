@@ -1,7 +1,7 @@
 'use strict'
 
-// log on files
-const logger = require('console-files')
+// handle Store API errors
+const errorHandling = require('./error-handling')
 
 module.exports = ({ appSdk, storeId, auth }, getHiddenData) => {
   // read configured options from app data
@@ -36,7 +36,7 @@ module.exports = ({ appSdk, storeId, auth }, getHiddenData) => {
     .catch(err => {
       // cannot GET current application
       // debug error
-      logger.error(err)
+      errorHandling(err)
       throw err
     })
 }
