@@ -2,6 +2,8 @@
 
 Boilerplate for E-Com Plus apps with Node.js and Express web framework
 
+[Changelog](https://github.com/ecomclub/express-app-boilerplate/blob/master/CHANGELOG.md)
+
 ## Getting started
 
 Setup the source of your new E-Com Plus app with this boilerplate
